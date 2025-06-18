@@ -6,7 +6,6 @@ from PIL import Image, ImageOps, ImageEnhance
 from models.model import HandwrittenCNN
 from utils.transforms import load_emnist_mapping
 import matplotlib.pyplot as plt
-from scipy import ndimage
 from sklearn.cluster import DBSCAN
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -448,7 +447,7 @@ def recognize_handwritten_text(image_path, save_debug=False, visualize=False, sa
 
 if __name__ == '__main__':
     # Example usage
-    test_image = 'sample1.png'  # Your form image
+    test_image = 'sample4.jpg'  # Your form image
 
     print("Recognizing handwritten text with EMNIST preprocessing...")
     result = recognize_handwritten_text(test_image, save_debug=True, visualize=True,

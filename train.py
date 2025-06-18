@@ -24,17 +24,23 @@ def load_checkpoint(model, optimizer, filename):
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = HandwrittenCNN().to(device)
 
-# checkpoint_path = 'handwritten_cnn_epoch50.pth'
-# model.load_state_dict(torch.load(checkpoint_path))
-# print(f"Resumed from checkpoint: {checkpoint_path}")
-
 train_loader, val_loader = get_emnist_dataloader()
 
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 
+start_epoch = 0
+loss = None
+checkpoint_path = 'checkpoint100.pth'
+
+try:
+    model, optimizer, start_epoch, loss = load_checkpoint(model, optimizer, checkpoint_path)
+    print(f"Resumed training from checkpoint: {checkpoint_path}, starting at epoch {start_epoch}")
+except FileNotFoundError:
+    print(f"No checkpoint found at {checkpoint_path}, starting from scratch.")
+
 print("Training has started")
-for epoch in range(50):
+for epoch in range(start_epoch, 200):
     model.train()
     for images, labels in train_loader:
         images, labels  = images.to(device), labels.to(device)

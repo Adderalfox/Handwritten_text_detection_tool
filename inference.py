@@ -5,7 +5,7 @@ from models.model import HandwrittenCNN
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model = HandwrittenCNN(num_classes=62)
-model.load_state_dict(torch.load('checkpoint40.pth', map_location=device)['model_state_dict'])
+model.load_state_dict(torch.load('checkpoint130.pth', map_location=device)['model_state_dict'])
 model.to(device)
 model.eval()
 
