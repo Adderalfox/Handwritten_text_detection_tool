@@ -29,8 +29,3 @@ A deep learning-based tool for detecting and classifying handwritten characters 
 - train.py: Training loop and checkpointing logic
 - utils.py: Helper functions for saving/loading model states
 - README.md: Project overview
-
-## ✅ Status
-✅ Completed model training
-✅ Saved weights
-✅ Ready for deployment or inference on custom data
